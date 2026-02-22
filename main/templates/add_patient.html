@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Patient</title>
+</head>
+<body>
+
+<h2>Add Patient</h2>
+
+<form method = 'POST'>
+    {% csrf_token %} #security protection prevents malicious attack
+    {{ form.as_p}}
+    <button type="submit"> save </button>
+</form>
+</body>
+</html>
