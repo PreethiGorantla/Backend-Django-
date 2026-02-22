@@ -78,18 +78,18 @@ python manage.py runserver
 
 📌 API Endpoints
 
-/api/ – API root
-/add/ – Add patient
-/update/<id>/ – Update patient
-/login/ – User login
-/register/ – User registration
+/api/ – API root, 
+/add/ – Add patient,
+/update/<id>/ – Update patient,
+/login/ – User login,
+/register/ – User registration,
 
 📖 What I Learned
 
-Django Project Structure
-Models & Migrations
-Forms Handling
-Template Rendering
-Authentication System
-REST API Development
-Git & GitHub Version Control
+Django Project Structure,
+ Models & Migrations,
+ Forms Handling,
+ Template Rendering,
+ Authentication System,
+ REST API Development,
+ Git & GitHub Version Control,
