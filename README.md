@@ -65,15 +65,15 @@ venv\Scripts\activate
 Mac/Linux:
 source venv/bin/activate
 
-3️⃣ Install Dependencies
-pip install django
-for REST Framework
+3️⃣ Install Dependencies :
+pip install django 
+For REST Framework :
 pip install django djangorestframework
 
-4️⃣ Run Migrations
+4️⃣ Run Migrations : 
 python manage.py migrate
 
-5️⃣ Run Server
+5️⃣ Run Server:
 python manage.py runserver
 
 📌 API Endpoints
