@@ -3,4 +3,4 @@ from .models import Patient
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ['name' , 'age', 'disease', 'admitted_date']
+        fields = ['age', 'disease', 'admitted_date']

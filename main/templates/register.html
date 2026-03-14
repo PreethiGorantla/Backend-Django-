@@ -6,6 +6,13 @@
 <body>
 
     <h2>Patient Registration</h2>
+        <!-- Display messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
 
     <form method="POST" action="{% url 'register' %}">
         {% csrf_token %}
@@ -26,9 +33,9 @@
     </p>
 
     <!-- Display messages -->
-    {% for message in messages %}
-        <p style="color:red;">{{ message }}</p>
-    {% endfor %}
+   <!-- {% for message in messages %}-->
+    <!--    <p style="color:red;">{{ message }}</p> -->
+  <!--  {% endfor %} -->
 
 </body>
 </html>

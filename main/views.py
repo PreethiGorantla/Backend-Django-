@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from rest_framework.permissions import IsAuthenticated
 
 from .forms import PatientForm
 from .models import Patient
@@ -50,14 +51,16 @@ def user_logout(request):
     return redirect('patient_list')
 @login_required
 def patient_list(request):
-    patients = Patient.objects.all()
+    patients = Patient.objects.filter(user=request.user)
     return render(request, 'patient_list.html', {'patients': patients})
 @login_required
 def add_patient(request):
     if request.method == 'POST':
         form = PatientForm(request.POST)
         if form.is_valid():
-            form.save()
+            patient = form.save(commit=False) # don't save yet
+            patient.user = request.user  # assign logged-in user
+            patient.save()  # now save
             return redirect('patient_list')
     else:
         form = PatientForm()
@@ -88,3 +91,8 @@ def delete_patient(request,pk):
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    permission_classes = [IsAuthenticated]
+    def get_queryset(self):
+        return Patient.objects.filter(user=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

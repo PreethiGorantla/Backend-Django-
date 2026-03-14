@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 
 from django.urls import path, include
+from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from main.views import patient_list, add_patient, update_patient, delete_patient, user_login, user_logout, register
 urlpatterns = [
     path('admin/', admin.site.urls),
    # path('',include('main.urls')),
     #path("",patient_list,name='patient_list'),
-    path("",user_login,name='home'),
-    path('login/', user_login, name='login'),
+
+    path('', user_login, name='login'),
     path('register/',register,name='register'),
     path('logout/',user_logout,name='logout'),
     path('patients/',patient_list,name='patient_list'),
@@ -31,4 +32,7 @@ urlpatterns = [
     path('update/<int:pk>/',update_patient,name='update_patient'),
     path('delete/<int:pk>/',delete_patient,name='delete_patient'),
     path('api/',include('main.api_urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
 ]
